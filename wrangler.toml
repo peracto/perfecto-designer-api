@@ -1,0 +1,16 @@
+name = "perfecto-designer-api"
+type = "webpack"
+account_id = "c47426aa77ed21fe2536eb5855145d92"
+# workers_dev = true
+route = "https://bagbuilders.co.uk/api/*"
+zone_id = "80beb3376c62181e82fab076611ab55f"
+
+vars = {ENVIRONMENT = 'dev1', APPCONFIG = '{"jwtId":"jwtx","gcp":{"certId":"sertx", "projectId":"copper-tempo-277811","keyring": "testkeyring", "key1": "key3", "imageBucket":"instacreate-images-test"}}'}
+kv-namespaces = [
+  { binding = "CLIENT_ROUTING", id = "4654beb86a4243d394a4872c787312da", preview_id = "4654beb86a4243d394a4872c787312da"}
+]
+
+[site]
+bucket = "./dist"
+entry-point = "workers-site"
+
