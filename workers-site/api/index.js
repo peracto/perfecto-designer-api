@@ -1,16 +1,18 @@
-import router from '../kiss/kiss-router'
-import authorize from '../app/app-authorize'
-import getVerify from './get-verify'
-import getDesign from './get-design'
-import getOrder from './get-order'
-import putUpload from './put-upload'
-import postDesign from './post-design'
+import { buildRouter } from 'kiss-simple-router'
+import { authorize } from '../app/app-authorize'
+import { getVerify } from './get-verify'
+import { getDesign } from './get-design'
+import { getOrder } from './get-order'
+import { putUpload } from './put-upload'
+import { postDesign } from './post-design'
 
-export default router({
+console.log('APP_INDEX_STARTUP')
+
+export default buildRouter({
   get: {
     verify: getVerify,
-    design: getDesign,
-    order: getOrder
+    design: authorize(getDesign),
+    order: authorize(getOrder)
   },
   put: {
     upload: authorize(putUpload)

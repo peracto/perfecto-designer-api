@@ -1,14 +1,14 @@
-import { verifyJwt } from '../kiss/kiss-subtle-jwt'
-import ppk from './app-credentials'
-import respond from './app-response-builder'
+import { verifyJwt } from 'kiss-subtle'
+import { appCredentials } from './app-credentials'
+import { responseBuilder } from './app-response-builder'
 
-export default function authorize (cb) {
+export function authorize (cb) {
   return async request => {
     const auth = getAuthToken(request)
-    const token = auth && await verifyJwt(await ppk.public(), auth)
+    const token = auth && await verifyJwt(await appCredentials.public(), auth)
     return token
       ? cb(request, token)
-      : respond('not authorized', 401)
+      : responseBuilder('not authorized', 401)
   }
 }
 

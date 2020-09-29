@@ -11,7 +11,9 @@
   "dependencies": {
     "@google-cloud/storage": "^5.3.0",
     "kiss-kv-keys": "^0.0.3",
-    "kiss-subtle": "^0.0.1",
+    "kiss-object-cache": "0.0.2",
+    "kiss-simple-router": "^0.0.1",
+    "kiss-subtle": "0.0.3",
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
@@ -23,7 +25,8 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
     "kiss-fetch-auth": "^0.0.4",
-    "kiss-fetch-retry": "^0.0.5"
+    "kiss-fetch-retry": "^0.0.5",
+    "kiss-gcp": "0.0.6"
   },
   "engines": {
     "node": ">= 10.18.1",

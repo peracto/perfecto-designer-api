@@ -1,4 +1,4 @@
-export default (response, status, headers) => {
+export const responseBuilder = (response, status, headers) => {
   if (response === null || response === undefined) {
     return new Response(null, { status: status || 200, headers })
   }

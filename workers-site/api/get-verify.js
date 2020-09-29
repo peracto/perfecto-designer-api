@@ -1,23 +1,30 @@
-import { kms } from '../gcp'
-import ppk from '../app/app-credentials'
-import jwt from '../kiss/kiss-subtle-jwt'
-import respond from '../app/app-response-builder'
+import { gcpKms } from '../gcp/gcp-kms'
+import { appCredentials } from '../app/app-credentials'
+import { verifyJwt, signJwt, parseJwtToken } from 'kiss-subtle'
+import { responseBuilder } from '../app/app-response-builder'
 
-export default async request => {
+export const getVerify = async request => {
+  console.log('getVerify')
   const requestUrl = new URL(request.url)
-  const gcpToken = jwt.parse(requestUrl.searchParams.get('token'))
-  const key = await kms.getPublicKey(gcpToken.meta.kv)
-  const valid = await jwt.verifyJwt(key, gcpToken)
+  console.log('API::VERIFY', requestUrl.href)
+  const gcpToken = parseJwtToken(requestUrl.searchParams.get('token'))
+  console.log('API::PARSED', gcpToken)
+  const key = await gcpKms.getPublicKey(gcpToken.meta.kv)
+  console.log('API::PUBLIC KEY', key)
+  const valid = await verifyJwt(key, gcpToken)
+  console.log('API::VERIFIED', valid)
 
   if (!valid) {
-    return respond('Invalid token', 401)
+    return responseBuilder('Invalid token', 401)
   }
+  console.log('API::SIGN 1')
 
   // Re-sign using our private key
-  const token = await jwt.signJwt(
-    await ppk.private(),
+  const token = await signJwt(
+    await appCredentials.private(),
     gcpToken.rawPayload
   )
+  console.log('API::SIGN 2')
 
-  return respond({ valid: !!valid, token })
+  return responseBuilder({ valid: !!valid, token })
 }

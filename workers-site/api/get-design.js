@@ -1,5 +1,6 @@
-import { storage } from '../gcp'
+import { gcpStorage } from '../gcp/gcp-storage'
 
-export default function get (request) {
-  return storage.get('test/design.json2')
+export function getDesign (request, { data }) {
+  console.log('getDesign')
+  return gcpStorage.get(`${data.id}/design.json`)
 }

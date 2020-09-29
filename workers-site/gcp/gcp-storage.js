@@ -1,4 +1,8 @@
-import fetchGcp from './gcp-fetch'
-import factory from '../kiss/kiss-gcp-storage'
-import config from '../app/app-config'
-export default factory(fetchGcp, config.gcp.imageBucket)
+import { gcpFetch } from './gcp-fetch'
+import { storage } from 'kiss-gcp'
+import { gcpConfig } from '../app/app-config'
+
+export const gcpStorage = storage.storageFactory({
+  fetch: gcpFetch,
+  bucket: gcpConfig.imageBucket
+})

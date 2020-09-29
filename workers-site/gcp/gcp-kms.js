@@ -1,18 +1,13 @@
-import kmsFactory from '../kiss/kiss-gcp-kms'
-import fetchGcp from './gcp-fetch'
-import cacher from '../kiss/kiss-object-cache'
-import { importKey } from '../kiss/kiss-subtle-key'
-import config from '../app/app-config'
+import { kms } from 'kiss-gcp'
+import { gcpFetch } from './gcp-fetch'
+import { cacheKey } from 'kiss-object-cache'
+import { importKey } from 'kiss-subtle'
+import { appConfig } from '../app/app-config'
 
-export default (() => {
-  const kms = kmsFactory(
-    fetchGcp,
-    config.keys.verify,
-    key => importKey('spki', key.pem, key.algorithm, false, ['verify'])
-  )
+const cacheIt = o => ({ ...o, getPublicKey: cacheKey(o.getPublicKey) })
 
-  return {
-    ...kms,
-    getPublicKey: cacher(kms.getPublicKey)
-  }
-})()
+export const gcpKms = cacheIt(kms.kmsFactory({
+  fetch: gcpFetch,
+  projectName: appConfig.keys.verify,
+  decoder: key => importKey('spki', key.pem, key.algorithm, false, ['verify'])
+}))

@@ -1218,6 +1218,13 @@ kiss-fetch-retry@^0.0.5:
   resolved "https://registry.yarnpkg.com/kiss-fetch-retry/-/kiss-fetch-retry-0.0.5.tgz#9ac3fb1cf21fb9c89f701673c7ede45d2c34a967"
   integrity sha512-BtzC70WzL1pUtL7UcJvee/+eH8JDX7LddIxaT+apDCoU/mI73kY+jTu27qIkL//e0sYysIwSr5CWsEoNvXcGvQ==
 
+kiss-gcp@0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/kiss-gcp/-/kiss-gcp-0.0.6.tgz#5c9ae41cb44b6471648ce2e902d06ecc1563ca0d"
+  integrity sha512-3bwjtFK8nVfXkx7xIusyzyNbF0vZQNwNKx+wGoQZ943n+J+6iHXUd5K8QhVYzEdJDFOwTIwvL2V6MuN/BRBTyg==
+  dependencies:
+    kiss-uri-encoder "0.0.3"
+
 kiss-kv-keys@^0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/kiss-kv-keys/-/kiss-kv-keys-0.0.3.tgz#0d78990269912c86d8f3a359f4cff49d0dfd8f61"
@@ -1226,12 +1233,27 @@ kiss-kv-keys@^0.0.3:
     "@cloudflare/workers-types" "^2.0.0"
     "@types/node" "^14.10.3"
 
-kiss-subtle@^0.0.1:
+kiss-object-cache@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/kiss-object-cache/-/kiss-object-cache-0.0.2.tgz#c1fb1d18b2f575cc83197c43646869f1a2111aa5"
+  integrity sha512-JQArltO9xw2tXJz+YgP6Z1ftFuNqnMdtG5P3CKdJJfrElg7jlG834l9OUpx9JWEvDyk2pCTWnqcxqYK+ZO1wcw==
+
+kiss-simple-router@^0.0.1:
   version "0.0.1"
-  resolved "https://registry.yarnpkg.com/kiss-subtle/-/kiss-subtle-0.0.1.tgz#274b69ea14abb3d3fa1b232f71b3e78b8315945b"
-  integrity sha512-rVIIX9SLSVl2b76AiKdT3b3bnV7ozDv+3ka40RBg7RraqZeZcIeVU2HcSYaH1lXYXgZc4b02YkItjuYohB5CYQ==
+  resolved "https://registry.yarnpkg.com/kiss-simple-router/-/kiss-simple-router-0.0.1.tgz#b074e4c1a0f1e262e72ba77899ced88bd7039f41"
+  integrity sha512-quMSyh4wMJR2KD53l8/QVv/+cIaTCsfLldmhhP7rXusBy/cws69SR/BPpHDnB2fezHqce8ifi7pQSdY9cY+wbg==
+
+kiss-subtle@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/kiss-subtle/-/kiss-subtle-0.0.3.tgz#ef3290c32acff937b4b485f5bdf2f96f5a40bd9c"
+  integrity sha512-qDm7EL+i1Hn5NwYExBjxMw1DDC28sSeq8LBmDNlhNX8GnGz/uJmV1SDsUjg9FAgPidLVMVjn5DnE1FogRiCzBg==
   dependencies:
     "@types/node" "^14.10.3"
+
+kiss-uri-encoder@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/kiss-uri-encoder/-/kiss-uri-encoder-0.0.3.tgz#6468e4a363a95857fbf94502a966269063bc0e86"
+  integrity sha512-yF+mvBQVbcYiSzzUl1vFII6SbDhjfSxQovwaOMA2UWL/jmlKHGkpn/8LZVvcMCmeacJEt5L6WQ67W1gtULQwNQ==
 
 levn@^0.3.0, levn@~0.3.0:
   version "0.3.0"

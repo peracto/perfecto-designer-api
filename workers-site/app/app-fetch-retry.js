@@ -1,6 +1,6 @@
 import { fetchRetryFactory } from 'kiss-fetch-retry'
 
-export default fetchRetryFactory({
+export const fetchRetry = fetchRetryFactory({
   maxRetries: 5,
   fetch: fetch,
   shouldRetry (response) {

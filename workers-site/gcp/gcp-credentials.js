@@ -1,5 +1,5 @@
 import kvKeys from 'kiss-kv-keys'
-import { life } from '../utility'
-import env from '../app/app-env'
+import { cacheTimed } from 'kiss-object-cache'
+import { appEnv } from '../app/app-env'
 
-export default life(env.keyLife, () => kvKeys(env.kvstore, env.gcp.certId))
+export const gcpCredentials = cacheTimed(appEnv.keyLife, () => kvKeys(appEnv.kvstore, appEnv.gcp.certId))

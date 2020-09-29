@@ -1,5 +1,5 @@
-import { storage } from '../gcp'
+import { gcpStorage } from '../gcp/gcp-storage'
 
-export default async function getOrder (request) {
-  return await storage.get('test/sku-map.json')
+export async function getOrder (request) {
+  return await gcpStorage.get('test/sku-map.json')
 }
