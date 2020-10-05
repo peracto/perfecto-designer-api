@@ -1,10 +1,15 @@
-import { gcpStorage } from '../gcp/gcp-storage'
+import { firestore } from '../gcp/gcp-firestore'
 import { responseBuilder } from '../app/app-response-builder'
 
-export const postDesign = async (request, { data, meta }) => {
-  console.log('postDesign')
+export const postDesign = async (request, { data }) => {
   const result = await request.text()
-  console.log('posting Design', result)
-  const rc = await gcpStorage.put(`${data.id}/design.json`, result, 'text/json')
-  return rc
+  console.log('SAVING::', result)
+  const a = await firestore.patch(
+    `designs/${data.id}`,
+    {
+      document: result
+    }
+  )
+
+  return responseBuilder(a)
 }

@@ -1,6 +1,12 @@
-import { gcpStorage } from '../gcp/gcp-storage'
+import { firestore } from '../gcp/gcp-firestore'
+import { responseBuilder } from '../app/app-response-builder'
 
-export function getDesign (request, { data }) {
-  console.log('getDesign')
-  return gcpStorage.get(`${data.id}/design.json`)
+export async function getDesign (request, { data, meta }) {
+  const a = await firestore.get(`designs/${data.id}`)
+  console.log('DESIGN:::', JSON.stringify(data))
+  return responseBuilder({
+    createTime: a.createTime,
+    updatedTime: a.updateTime,
+    document: a.value.document
+  })
 }
